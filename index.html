@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/f1ae8c3ec6.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="main-city">
+            <h1 id="main"></h1>
+            <p class="current-date" id="current">Saturday 06 May 2023</p>
+
+            <p>
+              Currently: <span id="temperature">15</span>
+              <span id="units">
+                <a href="#" class="celsius" id="celsius-link">°C</a> |
+                <a href="#" class="fahrenheit" id="fahrenheit-link">°F</a>
+              </span>
+            </p>
+
+            <p class="sun-cloud-rain">🌦</p>
+
+            <p class="humidity-wind">
+              <span id="humidity-level">Humidity: 75%</span>
+
+              <br />
+              <span id="wind-speed">Wind: 8km/h</span>
+            </p>
+            <div class="clock">🕗</div>
+
+            <div class="time" id="hours">15h35</div>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="row">
+            <form class="input-city" id="city-search">
+              <input
+                type="text"
+                placeholder="Enter a city"
+                autofocus="on"
+                autocomplete="off"
+                id="search-text-input"
+              />
+
+              <input type="submit" value="Search" class="shadow-sm" />
+            </form>
+          </div>
+          <div class="col-12"></div>
+          <div class="center-items">
+            <div class="row">
+              <div class="col-12">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="current-location"
+                >
+                  Current Location
+                </button>
+                <div class="forecast">Forecast</div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 days-week">
+                  <div class="day">Sunday</div>
+                  <p>07.05.2023</p>
+                  <div class="weather-icon">❄</div>
+                  <p>13°C | 56°F</p>
+                </div>
+                <div class="col-3">
+                  <div class="day">Monday</div>
+                  <p>08.05.2023</p>
+                  <div class="weather-icon">⛅</div>
+                  <p>15°C | 59°F</p>
+                </div>
+                <div class="col-3">
+                  <div class="day">Tuesday</div>
+                  <p>09.05.2023</p>
+                  <div class="weather-icon">☀</div>
+                  <p>27°C | 80°F</p>
+                </div>
+                <div class="col-3">
+                  <div class="day">Wednesday</div>
+                  <p>10.05.2023</p>
+                  <div class="weather-icon">☀</div>
+                  <p>19°C | 66°F</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
