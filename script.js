@@ -108,6 +108,9 @@ function fetchWeatherData(cityName) {
       return response;
     })
     .then(function (response) {
+      showDescription(response); // Call the function to display the description of the weather
+    })
+    .then(function (response) {
       showHumidity(response); // Call the function to display temperature
       return response;
     })
@@ -117,6 +120,16 @@ function fetchWeatherData(cityName) {
 }
 
 // Function to display temperature
+
+function showDescription(response) {
+  let description = response.data.weather[0].description;
+  let capitalizedDescription =
+    description.charAt(0).toUpperCase() + description.slice(1);
+  //carAt(0) =  is a function that looks at the first character of the string.
+  //description.slice(1) takes the part of the description starting from the second character onwards.
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = `${capitalizedDescription}`;
+}
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
