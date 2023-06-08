@@ -123,12 +123,11 @@ function fetchWeatherData(cityName) {
 
 function showDescription(response) {
   let description = response.data.weather[0].description;
-  let capitalizedDescription =
-    description.charAt(0).toUpperCase() + description.slice(1);
+
   //carAt(0) =  is a function that looks at the first character of the string.
   //description.slice(1) takes the part of the description starting from the second character onwards.
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = `${capitalizedDescription}`;
+  descriptionElement.innerHTML = `${description}`;
 }
 
 function showTemperature(response) {

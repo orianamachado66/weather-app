@@ -46,6 +46,11 @@ form {
 .current-date {
   font-size: 12px;
 }
+
+.weather-description {
+  font-size: 12px;
+  text-transform: capitalize;
+}
 .humidity-wind {
   font-size: 13px;
 }
