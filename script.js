@@ -152,9 +152,11 @@ function showWind(response) {
 }
 
 function showIcon(response) {
-  let icon = response.data.weather[0].icon;
-  let iconElement = document.querySelector("#icon");
-  iconElement.innerHTML = `${icon}`;
+  let iconElement = querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 // Get the search form element from the HTML and add a submit event listener with JavaScript
 
