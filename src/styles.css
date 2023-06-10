@@ -64,9 +64,15 @@ form {
 .celsius {
   text-decoration: none;
 }
-.sun-cloud-rain {
+.main-weather-icon img {
   text-align: center;
-  font-size: 40px;
+  width: 100px; /* Adjust the width to your desired small size */
+  height: 100px; /* Adjust the height to your desired small size */
+  padding: 5px;
+}
+.weather-icon {
+  text-align: center;
+  font-size: 15px;
 }
 
 .input-city {

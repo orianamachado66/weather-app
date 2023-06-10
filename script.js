@@ -116,6 +116,9 @@ function fetchWeatherData(cityName) {
     })
     .then(function (response) {
       showWind(response); // Call the function to display temperature
+    })
+    .then(function (response) {
+      showIcon(response); // Call the function to display the weather icon
     });
 }
 
@@ -123,9 +126,6 @@ function fetchWeatherData(cityName) {
 
 function showDescription(response) {
   let description = response.data.weather[0].description;
-
-  //carAt(0) =  is a function that looks at the first character of the string.
-  //description.slice(1) takes the part of the description starting from the second character onwards.
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = `${description}`;
 }
@@ -151,6 +151,11 @@ function showWind(response) {
   windElement.innerHTML = `Wind: ${wind}km/h`;
 }
 
+function showIcon(response) {
+  let icon = response.data.weather[0].icon;
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `${icon}`;
+}
 // Get the search form element from the HTML and add a submit event listener with JavaScript
 
 let searchForm = document.querySelector("#city-search");
