@@ -125,7 +125,8 @@ function showDescription(response) {
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = `${temperature}`;
+  celsiusTemperature = response.data.main.temp; // this will also work with the conversion from celsius to fahrenheit function below
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 // Function to display humidity
@@ -189,3 +190,25 @@ currentLocationButton.addEventListener("click", function () {
   // Ask the device for its current location and provide showCurrentLocation as the function to handle the location data
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 });
+
+// Convert Celsius temperature to Fahrenheit in the main city
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault(); // we do not want the link to open
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  // making the formula go back to celsius temperature
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
