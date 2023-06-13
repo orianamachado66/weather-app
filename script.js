@@ -63,12 +63,10 @@ displayDate(now);
 function fetchWeatherDataForDefaultCity() {
   let mainCity = (document.querySelector("#main").innerHTML = "Lisbon"); // Set the default city name to Lisbon
   let apiKey = "57b2c40fdae71a6ba41d72685e3226e2";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${mainCity}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lisbon&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(function (response) {
-    showTemperature(response);
-    showHumidity(response);
-    showWind(response);
+    handleResponse(response);
   });
 }
 
@@ -97,6 +95,14 @@ function displayCity(event) {
   }
 }
 
+function handleResponse(response) {
+  showTemperature(response); // Call the function to display temperature
+  showDescription(response); // Call the function to display the description of the weather
+  showHumidity(response); // Call the function to display temperature
+  showWind(response); // Call the function to display temperature
+  showIcon(response); // Call the function to display the weather icon
+}
+
 // Function to fetch weather data
 function fetchWeatherData(cityName) {
   let apiKey = "57b2c40fdae71a6ba41d72685e3226e2";
@@ -104,21 +110,7 @@ function fetchWeatherData(cityName) {
   axios
     .get(`${apiUrl}&appid=${apiKey}`) // Make a GET request to the weather API
     .then(function (response) {
-      showTemperature(response); // Call the function to display temperature
-      return response;
-    })
-    .then(function (response) {
-      showDescription(response); // Call the function to display the description of the weather
-    })
-    .then(function (response) {
-      showHumidity(response); // Call the function to display temperature
-      return response;
-    })
-    .then(function (response) {
-      showWind(response); // Call the function to display temperature
-    })
-    .then(function (response) {
-      showIcon(response); // Call the function to display the weather icon
+      handleResponse(response);
     });
 }
 
@@ -152,7 +144,7 @@ function showWind(response) {
 }
 
 function showIcon(response) {
-  let iconElement = querySelector("#main-icon");
+  let iconElement = document.querySelector("#main-icon");
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
