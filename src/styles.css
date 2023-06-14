@@ -79,8 +79,9 @@ form {
   margin-bottom: 10px;
 }
 .shadow-sm {
-  font-size: 15px;
+  font-size: 18px;
   padding: 5px 10px;
+  margin-left: 0;
   background-color: #6c757d;
   border: none;
   color: #fff;

@@ -52,9 +52,9 @@
         </div>
 
         <div class="col-8">
-          <div class="row">
-            <div class="col-7">
-              <form class="input-city" id="city-search">
+          <form class="input-city" id="city-search">
+            <div class="row">
+              <div class="offset-1 col-7">
                 <input
                   type="text"
                   placeholder="Enter a city"
@@ -63,24 +63,27 @@
                   id="search-text-input"
                   class="form-control"
                 />
+              </div>
 
-                <div class="col-auto">
-                  <input type="submit" value="Search" class="shadow-sm" />
-                </div>
-              </form>
+              <div class="col-2">
+                <input type="submit" value="Search" class="shadow-sm" />
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col text-center">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                id="current-location"
+              >
+                Current Location
+              </button>
             </div>
           </div>
-
           <div class="center-items">
             <div class="row">
               <div class="col-12">
-                <button
-                  type="button"
-                  class="btn btn-outline-secondary"
-                  id="current-location"
-                >
-                  Current Location
-                </button>
                 <div class="forecast">Forecast</div>
               </div>
 
@@ -111,19 +114,21 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-12">
-                <div class="coder-information">
-                  <a
-                    href="https://github.com/orianamachado66/weather-app"
-                    target="_blank"
-                  >
-                    Open source code</a
-                  >
-                  by Oriana Machado
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+          <div class="coder-information">
+            <a
+              href="https://github.com/orianamachado66/weather-app"
+              target="_blank"
+            >
+              Open source code</a
+            >
+            by Oriana Machado
           </div>
         </div>
       </div>
