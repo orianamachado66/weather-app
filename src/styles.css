@@ -107,6 +107,12 @@ form {
   font-size: 30px;
   padding: 10px 5px;
 }
+.day {
+  opacity: 0.7;
+}
+.weather-forecast-min-temperature {
+  opacity: 0.7;
+}
 .weather-icon {
   font-size: 35px;
   padding: 15px 5px;
