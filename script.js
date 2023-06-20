@@ -101,6 +101,7 @@ function handleResponse(response) {
   showHumidity(response); // Call the function to display temperature
   showWind(response); // Call the function to display temperature
   showIcon(response); // Call the function to display the weather icon
+  getForecast(response.data.coord); // Call the function to display the coordinates and then get the weather forecast for the next days
 }
 
 // Function to fetch weather data
@@ -151,6 +152,7 @@ function showIcon(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 }
+
 // Get the search form element from the HTML and add a submit event listener with JavaScript
 
 let searchForm = document.querySelector("#city-search");
@@ -213,26 +215,58 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-//Weather forecast
+//Weather forecast: get the dates correctly displayed through a function, display the html we want through another function and populate it for the next days of the week
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-3">
-        <div class="day">${day}</div>
-            <div class="weather-icon">❄</div>
-                <span class="weather-forecast-min-temperature">13°C </span>
+
+  forecast.forEach(function (forecastDay, index) {
+    // condition to show only 4 days
+
+    if (index < 4) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-3">
+        <div class="day">${formatDay(forecastDay.dt)}</div>
+     
+            <div class="weather-icon">
+            <img src="https://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png"
+            alt=""
+            width="42"
+            
+         />
+            
+            </div>
+                <span class="weather-forecast-min-temperature">${Math.round(
+                  forecastDay.temp.min
+                )}°C </span>
                 |
-                <span class="weather-forecast-max-temperature"> 25°C</span>
+                <span class="weather-forecast-max-temperature"> ${Math.round(
+                  forecastDay.temp.max
+                )}°C</span>
       </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-displayForecast();
+
+//function to get the weather forecast for the following days and then call the displayForecast function to have it in HTML
+function getForecast(coordinates) {
+  let apiKey = "57b2c40fdae71a6ba41d72685e3226e2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
