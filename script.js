@@ -5,15 +5,7 @@ let now = new Date(); //this allows us to create a variable and, inside of it, s
 function displayDate(date) {
   let currentDate = document.querySelector("#current"); // here I am selecting the ID current
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
   let day = days[now.getDay()];
 
   let todayDate = now.getDate();
@@ -35,7 +27,7 @@ function displayDate(date) {
   let month = months[now.getMonth()];
   let year = now.getFullYear();
 
-  currentDate.innerHTML = `${day}, ${todayDate} ${month} ${year}`;
+  currentDate.innerHTML = `Last updated: ${day}, ${todayDate} ${month} ${year}`;
   // this will change the element I want into the current date
 
   // change the hours
@@ -142,7 +134,7 @@ function showHumidity(response) {
 function showWind(response) {
   let wind = response.data.wind.speed;
   let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = `Wind: ${wind}km/h`;
+  windElement.innerHTML = `Wind: ${wind}m/h`;
 }
 
 function showIcon(response) {
@@ -233,10 +225,10 @@ function displayForecast(response) {
   forecast.forEach(function (forecastDay, index) {
     // condition to show only 4 days
 
-    if (index < 4) {
+    if (index < 5) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col-3">
+        ` <div class="col-2">
         <div class="day">${formatDay(forecastDay.dt)}</div>
      
             <div class="weather-icon">
