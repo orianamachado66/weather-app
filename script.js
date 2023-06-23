@@ -163,6 +163,7 @@ function showCurrentLocationTemperature(response) {
   humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`; // Update the HTML element with the id "humidity-level" to display the humidity
   let windElement = document.querySelector("#wind-speed");
   windElement.innerHTML = `Wind: ${response.data.wind.speed}km/h`; // Update the HTML element with the id "wind-speed" to display the wind speed
+  getForecast(response.data.coord);
 }
 // This function is called when the device's current location is obtained
 function showCurrentLocation(position) {
